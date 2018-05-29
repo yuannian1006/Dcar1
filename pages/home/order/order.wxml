@@ -1,0 +1,42 @@
+<view class='all'>
+  
+<!-- 协议客户 START-->
+<view hidden="{{curtTab!==0}}" class='agr1-form'>
+      <view class='orderItem' >
+        <text wx:for="{{items}}" data-idx="{{index}}" class="item1 {{curtList == index ? 'on' : ''}}" wx:key="unique" bindtap='navbarTap1'>{{item}}</text>
+      </view>
+ 
+ 
+<!-- 协议客户 START-->
+ 
+ 
+  <view class="order-list" wx:for="{{list}}"> 
+  <view class="order-content" bindtap='walClick'>
+      <view class='order-car' >
+          {{item.carType}}
+      </view>
+      <view class="order-detail">
+          <view class='order-time iconfont icon-shijian-copy'>
+            {{item.createDate}}
+          </view>
+          <view class='order-start iconfont icon-qidian-copy'>
+            {{item.onLocation}}
+          </view>
+          <view class='order-end iconfont icon-zhongdian-copy'>
+            {{item.offLocation}}
+          </view>
+      </view>
+  </view>
+ </view>
+
+
+
+<!-- 订单列表 END-->
+
+ </view>
+
+<!-- 协议客户 END-->
+
+
+</view>
+ 
