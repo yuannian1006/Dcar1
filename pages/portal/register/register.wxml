@@ -8,20 +8,23 @@
     <form>
       <!-- <include src="../common/template_usrname.wxml" /> -->
       <view class='weui-cell weui-cell_input section'>
-        <label class='list-label iconfont icon-dianhua1'> 手机号</label>
-        <input name="pwd" type='text' placeholder='请输入手机号码' class='list-input' bindinput="usernameInput"></input>
+        <label class='weui-label iconfont icon-dianhua1'> 手机号</label>
+        <input name="pwd" type='text' placeholder='请输入手机号码' class='weui-input' bindinput="usernameInput"></input>
       </view>
       <view class='weui-cell weui-cell_input section'>
-        <label class='list-label iconfont icon-dianhua1'> 验证码</label>
-        <input name="pwd" type='text' placeholder='请输入手机验证码' class='list-input' bindinput="codeInput"></input>
+        <label class='weui-label iconfont icon-dianhua1'> 验证码</label>
+        <input name="pwd" type='text' placeholder='请输入手机验证码' class='weui-input' bindinput="codeInput"></input>
       </view>
       <view class='weui-cell weui-cell_input section'>
-        <label class='list-label iconfont icon-dianhua1'> 密码</label>
-        <input name="pwd" type='password' placeholder='请输入至少6位密码' class='list-input' bindinput="passwordInput"></input>
+        <label class='weui-label iconfont icon-dianhua1'> 密码</label>
+        <input name="pwd" type='password' placeholder='请输入至少6位密码' class='weui-input' bindinput="passwordInput"></input>
       </view>
       <view class='weui-cell weui-cell_input section'>
-        <label class='list-label iconfont icon-dianhua1'> 确认</label>
-        <input name="pwd2" type='password' placeholder='与密码保持一致' class='list-input' bindinput="passwordInput2"></input>
+        <label class='weui-label iconfont icon-dianhua1'> 确认</label>
+        <input name="pwd2" type='password' placeholder='与密码保持一致' class='weui-input' bindinput="passwordInput2"></input>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
       </view>
 
       <view class="reg-btn section1">
@@ -62,6 +65,6 @@
   </view>
 
 
-  <button class='sentcode' bindtap='setncode' >发送验证码</button>
+  <button class='sentcode' bindtap='setncode'>发送验证码</button>
 
 </view>

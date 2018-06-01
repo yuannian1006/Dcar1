@@ -42,8 +42,8 @@ Page({
 
     wx.request({
       method: "POST",
-      // url: 'http://localhost:8188/xxl-auth/system/user/login', //仅为示例，并非真实的接口地址
-      url: 'http://47.96.94.63:8188/xxl-auth/system/user/login',
+      url: app.globalData.apiUrl+'/system/user/login',
+
       data: {
         no: no,
         password: password
@@ -54,8 +54,10 @@ Page({
       success: function (res) {
         console.log("登录的res", res)
         var code = res.data.code;
+        console.log(res.data.results.tsSysUserId);
         if (code == 10000) {
           // 后台传递过来的值
+          var tsSysUserId = res.data.results.tsSysUserId;//用户ID
           var no = res.data.results.no;//用户编号
           var token = res.data.results.token;//token
           var name = res.data.results.name;
@@ -69,6 +71,7 @@ Page({
           var sex = res.data.results.sex;
 
           // 设置全局变量的值
+          app.globalData.tsSysUserId = tsSysUserId;
           app.globalData.no = no;
           app.globalData.token = token;
           app.globalData.name = name;
@@ -82,6 +85,7 @@ Page({
           app.globalData.sex = sex;
 
           // 将token存储到本地
+          wx.setStorageSync('tsSysUserId', tsSysUserId);
           wx.setStorageSync('no', no);
           wx.setStorageSync('token', token);
           wx.setStorageSync('name', name);

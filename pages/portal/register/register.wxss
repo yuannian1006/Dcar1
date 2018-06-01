@@ -45,14 +45,14 @@
 }
 
 .section {
-  font-size: 18px;
+  /* font-size: 18px; */
   /* background-color: #fff; */
 }
 
 .section1 {
-  font-size: 18px;
+  /* font-size: 18px; */
   /* background-color: #fff; */
-  margin-top: 13px;
+  /* margin-top: 13px; */
 }
 
 /* .regAll1 {
@@ -74,9 +74,9 @@
 
 .sentcode {
 font-size:12px;
-width:31%;
-top:1%;
-left:68%;
+width:25%;
+top:3%;
+left:71%;
 background-color:white;
 position:absolute;
 

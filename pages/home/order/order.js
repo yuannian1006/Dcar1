@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    items: ['行程中','已完成','已取消','全部'],
+    items: ['接单中','已完成','已取消','全部'],
     curtTab: 0,
     curtList: 0,
     latitude: 23.099994,
@@ -23,6 +23,7 @@ Page({
     elongitude: "", //下车经度
     list: [],
 
+
   },
   /**
   * 生命周期函数--监听页面加载
@@ -31,8 +32,8 @@ Page({
   onLoad: function (options) {
     var _this = this
     wx.request({
-      url: 'http://47.96.94.63:8188/xxl-auth/system/ppOrder/querylistByPage',
-      data: {},
+      url: app.globalData.apiUrl +'/system/ppOrder/querylistByPage',
+      data: { orderStatus: 'N'},
       method: 'POST',
       header: {
         'content-type': 'application/json',
@@ -49,7 +50,6 @@ Page({
         })
 
       }
-
     })
     console.log("List: ", this.data.list)
   },
@@ -65,15 +65,58 @@ Page({
   },
 
   navbarTap1: function (e) {
-    console.log("到这里了")
-    // console.log(curtList)
+
     this.setData({
       curtList: e.currentTarget.dataset.idx
     })
-    console.log(e)
+
+    var orderStatusO = 'N';
+    if (e.currentTarget.dataset.idx == 0) {
+      orderStatusO = 'N'
+    } else if (e.currentTarget.dataset.idx == '1') {
+      orderStatusO = 'C'
+    } else if (e.currentTarget.dataset.idx == '2') {
+      orderStatusO = 'Q'
+    } else if (e.currentTarget.dataset.idx == '3') {
+      orderStatusO = 'XX'
+    }  
+    var _this = this
+    wx.request({
+      url: app.globalData.apiUrl + '/system/ppOrder/querylistByPage',
+      data: { orderStatus: orderStatusO },
+      method: 'POST',
+      header: {
+        'content-type': 'application/json',
+        'Authorization': app.globalData.token
+      },
+
+      success: function (res) {
+        console.log(" app.globalData.token", app.globalData.token)
+        console.log("res", res)
+        console.log("res.data", res.data)
+        console.log("res.data.topics", res.data.topics)
+        _this.setData({
+          list: res.data.results
+        })
+
+      }
+    })
+     
   },
 
+  
+  /**
+ * 订单明细查看
+ */
+  orderClick: function(e) {
+    console.log("订单明细查看")
+    console.log(e);
+    console.log(e.currentTarget.dataset.id);
    
+     wx.navigateTo({ 
+       url: "orderdetail/orderdetail?dcPpOrderId=" + JSON.stringify(e.currentTarget.dataset.id), 
+      })
+  }
 
  
 

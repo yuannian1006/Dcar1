@@ -10,7 +10,7 @@
 </view>
 
 <view class="user-content">
-         <button class="system_login" formType="submit" >退出登录</button>
+         <button class="system_login" bindtap='loginout' formType="submit" >退出登录</button>
  
 </view>
 

@@ -12,10 +12,10 @@ Page({
     curtList: 0,
     latitude: 23.099994,
     longitude: 113.324520,
-    array: ['5座公务轿车', '7座商务车', '5座豪华车', '19座考斯特', '45座豪华大巴'],
-    date: util.formatTime(new Date), //格式化日期
-    time: util.formatTime2(new Date),
-    index: 0,
+    array: ['5座公务轿车', '7座商务车', '5座豪华车', '19座考斯特', '45座豪华大巴', '豪华婚车'],
+    date: util.formatTime(new Date), //用车日期
+    time: util.formatTime2(new Date),//用车时间
+    index: 0, //车型
     startLocation: "", //上车地点
     endLocation: "", //下车地点
     phoneNo: "",  //获取机上的联系人号码
@@ -104,7 +104,7 @@ Page({
   toUsrHome: function () {
     if (app.globalData.no == null) {
       // wx.navigateTo({url:"../login/login"})
-      console.log("这是点击头像 但无用户信心 指示用户到登录页面登录")
+      console.log("这是点击头像 但无用户信息 指示用户到登录页面登录")
       // wx.redirectTo({ url: "../login/login" })
       wx.navigateTo({ url: "../portal/login/login" })
     } else {
@@ -138,18 +138,132 @@ Page({
    * 订单提交,若无登录用户信息,调到登录页面,若用户信息
    * 正常则提交
    */
-  subBtnClick: function (e) {
-    console.log("订单提交")
-    if (app.globalData.userinfo == null) {
-      // wx.navigateTo({url:"../login/login"})
+  xyFormSubmit: function (e) {
+    
+    console.log("协议订单提交");
+    console.log(e);
+ 
+
+    var userDateInit = this.data.date;
+    var userTimeInit = this.data.time;
+    var carTypeInit = this.data.array[this.data.index];
+    if (app.globalData.no == null) {
+ 
+      wx.navigateTo({ url: "../portal/login/login" })
+    } else {
+      console.log("测试单位");
+      console.log(app.globalData.tsSysUserId);
+      //加载提示框
+      
+      wx.request({
+        method: "POST",
+        url: app.globalData.apiUrl +'/system/ppOrder/add',
+        data: {
+          userDate: this.data.date,
+          userTime: this.data.time,
+          onLocation: e.detail.value.onLocation,
+          offLocation: e.detail.value.offLocation,
+          flightNumber: e.detail.value.flightNumber,
+          byCustomerName: e.detail.value.byCustomerName,
+          byCustomerPhone: e.detail.value.byCustomerPhone,
+          carType: this.data.array[this.data.index],
+          orderType: this.data.curtList,
+          orderStatus:'N',
+          orderSource:'小程序',
+          tsSysUserId: app.globalData.tsSysUserId
+
+        },
+        header: {
+          'content-type': 'application/json',
+          'Authorization': app.globalData.token
+        },
+        success: function (res) {
+          console.log("登录的res", res)
+          var code = res.data.code;
+          if (code == 10000) {
+            // 后台传递过来的值
+       
+
+            // 切换到首页
+
+            wx.redirectTo({ url: "../home/order/orderinit/orderinit?userDate=" + userDateInit+  "&userTime=" + userTimeInit + "&carType=" + carTypeInit})
+          } else {
+
+          }
+        },
+        fail: function () {
+
+        }
+      })
+    }
+
+    },
+
+
+
+  /**
+   * 订单提交,若无登录用户信息,调到登录页面,若用户信息
+   * 正常则提交
+   */
+  lsFormSubmit: function (e) {
+
+    console.log("临客订单提交");
+    console.log(e);
+
+
+    var userDateInit = this.data.date;
+    var userTimeInit = this.data.time;
+    var carTypeInit = this.data.array[this.data.index];
+    if (app.globalData.no == null) {
 
       wx.navigateTo({ url: "../portal/login/login" })
     } else {
+      console.log("测试单位");
+      console.log(app.globalData.tsSysUserId);
+      //加载提示框
+
+      wx.request({
+        method: "POST",
+        url: app.globalData.apiUrl + '/system/ppOrder/add',
+        data: {
+          userDate: this.data.date,
+          userTime: this.data.time,
+          onLocation: e.detail.value.lsOnLocation,
+          offLocation: e.detail.value.lsOffLocation,
+          flightNumber: e.detail.value.lsFlightNumber,
+          byCustomerName: e.detail.value.lsByCustomerName,
+          byCustomerPhone: e.detail.value.lsByCustomerPhone,
+          carType: this.data.array[this.data.index],
+          orderType: this.data.curtList,
+          orderStatus: 'N',
+          orderSource: '小程序',
+          tsSysUserId: app.globalData.tsSysUserId
+
+        },
+        header: {
+          'content-type': 'application/json',
+          'Authorization': app.globalData.token
+        },
+        success: function (res) {
+          console.log("登录的res", res)
+          var code = res.data.code;
+          if (code == 10000) {
+            // 后台传递过来的值
 
 
-      wx.redirectTo({ url: "../index/index" })
+            // 切换到首页
 
+            wx.redirectTo({ url: "../home/order/orderinit/orderinit?userDate=" + userDateInit + "&userTime=" + userTimeInit + "&carType=" + carTypeInit })
+          } else {
+
+          }
+        },
+        fail: function () {
+
+        }
+      })
     }
+
   },
 
 
@@ -183,7 +297,7 @@ Page({
       success: function (res) {
         console.log("上车位置", res)
         that.setData({
-          startLocation: res.address,
+          startLocation: res.name,
           slatitude: res.latitude, //下车维度
           slongitude: res.longitude //下车经度
         })
@@ -199,7 +313,7 @@ Page({
       success: function (res) {
         console.log("上车位置", res)
         that.setData({
-          endLocation: res.address,
+          endLocation: res.name,
           elatitude: res.latitude, //下车维度
           elongitude: res.longitude, //下车经度
         })

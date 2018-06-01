@@ -1,39 +1,39 @@
 <view class="mcontainer">
   <view class="item">
-    <image src="/images/login_1.png" class="image" />
+    <image src="/images/login1.png" class="image" />
   </view>
 
   <view class="item">
     <form>
-    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell weui-cell_input">
         <view class="weui-cell__hd">
-            <view class="weui-label iconfont icon-dianhua1"> 账号</view>
+          <view class="weui-label iconfont icon-icon_account"> 账号</view>
         </view>
         <view class="weui-cell__bd">
-               <input class="weui-input" placeholder="请输入登录账号" bindinput="noInput"/>
+          <input class="weui-input" placeholder="请输入登录账号" bindinput="noInput" />
 
         </view>
-    </view>
-
-   <view class="weui-cell weui-cell_input">
-      <view class="weui-cell__hd">
-          <view class="weui-label iconfont icon-dianhua1"> 密码</view>
       </view>
-      <view class="weui-cell__bd">
-     <input class="weui-input" placeholder="请输入密码" password="true" bindinput="passwordInput"/>
 
-      </view>
-  </view>
-  <view class="weui-cell weui-cell_input">
-  </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label iconfont icon-mima"> 密码</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input " placeholder="请输入密码" password="true" bindinput="passwordInput" />
 
-  
-    <view class="loginOne">
-      <view class="login-btn">
-        <button type="primary" class="login-btn" bindtap="loginAction">登录</button>
+        </view>
       </view>
-    </view>
-      
+      <view class="weui-cell weui-cell_input">
+      </view>
+
+
+      <view class="loginOne">
+        <view class="login-btn">
+          <button type="primary" class="login-btn" bindtap="loginAction">登录</button>
+        </view>
+      </view>
+
     </form>
   </view>
 

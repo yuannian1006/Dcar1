@@ -1,17 +1,20 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/home/order/orderdetail/orderdetail",
+    "pages/home/order/orderinit/orderinit",
     "pages/home/user/user",
     "pages/home/system/syspwdsubmit/syspwdsubmit",
     "pages/home/system/syspwd/syspwd",
     "pages/home/system/system",
-    
+
     "pages/portal/login/login",
     "pages/portal/register/register",
 
     "pages/home/order/order", 
     "pages/home/wallet/wallet",
-    "pages/portal/tos/tos"
+    "pages/portal/tos/tos",
+    "pages/portal/updatepwd/updatepwd"
 
   ],
   "window":{

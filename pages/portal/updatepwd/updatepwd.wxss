@@ -1,8 +1,7 @@
 .regAll {
-  background-color: #f0f0f0;
+  /* background-color: #f0f0f0; */
   width: 100%;
-  margin-top:13px;
-
+  margin-top: 13px;
 }
 
 .form-usrname {
@@ -19,12 +18,17 @@
 
 /*以前的  */
 
- .reg-btn {
+.reg-btn {
   margin-top: 15px;
-   background-color: #B8B8B8; 
-   text-align: center;
-}  
+  background-color: #b8b8b8;
+}
 
+/*此处是根据用户是否勾选同意  注册按钮去出现不同颜色  */
+
+.on {
+  margin-top: 15px;
+  background-color: green;
+}
 
 .regCheckBoxAll {
   width: 100%;
@@ -32,8 +36,8 @@
   flex-direction: row;
   justify-content: space-around;
   font-size: 15px;
-  margin-top:13px;
-  background-color: white;
+  margin-top: 13px;
+  /* background-color: white; */
 }
 
 .regText {
@@ -41,31 +45,38 @@
 }
 
 .section {
-  font-size: 18px;
-  background-color: #fff;
+  /* font-size: 18px; */
+  /* background-color: #fff; */
 }
 
 .section1 {
-  font-size: 18px;
-  background-color: #fff;
-   margin-top:13px;
+  /* font-size: 18px; */
+  /* background-color: #fff; */
+  /* margin-top: 13px; */
 }
 
 /* .regAll1 {
   background-color: #fff;
 } */
 
-.list-input{-webkit-box-flex:1;-webkit-flex:1;flex:1}
+.list-input {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+  font-size:15px;
+}
 
-.list-label{
-  width:105px;word-wrap:break-word;word-break:break-all
+.list-label {
+  width: 105px;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 
 .sentcode {
 font-size:12px;
-width:31%;
-top:1%;
-left:68%;
+width:25%;
+top:3%;
+left:71%;
 background-color:white;
 position:absolute;
 

@@ -12,17 +12,17 @@
 
 
 <view class="user-content">
-  <view class='qianbao iconfont icon-chicun-' bindtap='walClick'>
-       钱包
+  <view class='qianbao iconfont icon-xingcheng' bindtap='ordClick'>
+       行程
   </view>
 </view>
 
 <view class="user-content">
-  <view class='xingcheng iconfont icon-xingcheng' bindtap='ordClick'>
-    行程
+  <view class='xingcheng iconfont icon-chicun-' bindtap='walClick'>
+    钱包
   </view>
   <view class='kabao iconfont icon-shouye' bindtap='setClick'>
-    卡包
+    卡券
   </view>
 </view>
 

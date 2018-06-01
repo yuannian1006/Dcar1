@@ -37,7 +37,7 @@ Page({
   },
   onUnload: function () {
     console.log("用户中心的导航 被点击")
-    wx.redirectTo ({ url: "../../index/index" })
+    // wx.redirectTo({ url: "/pages/index/index" })
   },
   /**
    * 查看行程
